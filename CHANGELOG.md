@@ -4,7 +4,7 @@
 
 ### Fixed
 
-- Fix missing `require` for FileUtils [#1]
+- Fix missing `require` for FileUtils (https://github.com/localedata/localedata-client/pull/1)
 
 ## 0.1.0 (2019-05-02)
 
