@@ -1,3 +1,5 @@
+require 'fileutils'
+
 module Localedata
   class Installer
     def install(project_id)
