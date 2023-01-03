@@ -17,7 +17,7 @@ module Localedata
 
       file_content = File.read(config_file_path)
       yaml_data = ERB.new(file_content).result
-      config_data = YAML.load(yaml_data)
+      config_data = YAML.safe_load(yaml_data)
 
       @access_token = (config_data['access_token'] || @access_token)
       @projects = (config_data['projects'] || @projects)
