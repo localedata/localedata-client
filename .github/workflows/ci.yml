@@ -24,3 +24,6 @@ jobs:
 
       - name: Run rubocop
         run: bundle exec rubocop --parallel
+
+      - name: Run tests
+        run: bundle exec rake test
