@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Localedata
   class Downloader
     def download(locales)
@@ -6,17 +8,17 @@ module Localedata
 
       client = Localedata::Client.new(configuration.access_token)
       configuration.projects.each do |project|
-        project["locales"].each do |language_code, relative_file_path|
+        project['locales'].each do |language_code, relative_file_path|
           next if locales.any? && !locales.include?(language_code)
 
           print "Downloading #{language_code} into #{relative_file_path}..."
-          data = client.pull(project["id"], language_code)
+          data = client.pull(project['id'], language_code)
           if data[:success]
             file_path = File.expand_path(relative_file_path)
             File.write(file_path, data[:yaml])
-            puts "Done."
+            puts 'Done.'
           else
-            puts "FAIL!"
+            puts 'FAIL!'
             puts "Error #{data[:status_code]}: #{data[:error]}"
           end
         end

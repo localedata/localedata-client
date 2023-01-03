@@ -1,13 +1,14 @@
-require "erb"
-require "yaml"
+# frozen_string_literal: true
+
+require 'erb'
+require 'yaml'
 
 module Localedata
   class Configuration
-    attr_reader :access_token
-    attr_reader :projects
+    attr_reader :access_token, :projects
 
     def initialize
-      @access_token = ENV["LOCALEDATA_ACCESS_TOKEN"]
+      @access_token = ENV.fetch('LOCALEDATA_ACCESS_TOKEN', nil)
       @projects = []
     end
 
@@ -18,21 +19,21 @@ module Localedata
       yaml_data = ERB.new(file_content).result
       config_data = YAML.load(yaml_data)
 
-      @access_token = (config_data["access_token"] || @access_token)
-      @projects = (config_data["projects"] || @projects)
+      @access_token = (config_data['access_token'] || @access_token)
+      @projects = (config_data['projects'] || @projects)
 
       validate_configuration!
     end
 
     def relative_config_file_path
-      File.join("config", "localedata.yml")
+      File.join('config', 'localedata.yml')
     end
 
     def config_file_path
       File.expand_path(relative_config_file_path)
     end
 
-  private
+    private
 
     def validate_config_file!
       unless File.exist?(config_file_path)
@@ -48,27 +49,27 @@ module Localedata
 
     def validate_configuration!
       if @access_token.to_s.strip.empty?
-        puts "Error: \"access_token\" is missing."
+        puts 'Error: "access_token" is missing.'
         exit 1
       end
 
-      unless @projects.kind_of?(Array)
-        puts "Error: \"projects\" is not an array."
+      unless @projects.is_a?(Array)
+        puts 'Error: "projects" is not an array.'
         exit 1
       end
 
       @projects.each do |project|
-        if project["id"].to_s.strip.empty?
-          puts "Error: \"id\" in \"projects\" is missing."
+        if project['id'].to_s.strip.empty?
+          puts 'Error: "id" in "projects" is missing.'
           exit 1
         end
 
-        unless project["locales"].kind_of?(Hash)
-          puts "Error: \"locales\" in \"projects\" is not a hash."
+        unless project['locales'].is_a?(Hash)
+          puts 'Error: "locales" in "projects" is not a hash.'
           exit 1
         end
 
-        project["locales"].each do |language_code, relative_file_path|
+        project['locales'].each do |_language_code, relative_file_path|
           file_path = File.expand_path(relative_file_path)
 
           unless File.exist?(file_path)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'fileutils'
 
 module Localedata
@@ -19,7 +21,7 @@ module Localedata
       puts congratulation(relative_config_file_path)
     end
 
-  private
+    private
 
     def default_config(project_id)
       <<~YAML

@@ -1,5 +1,11 @@
-source "https://rubygems.org"
+# frozen_string_literal: true
 
-git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
+source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+
+# Linters
+gem 'rubocop', require: false
+gem 'rubocop-minitest', require: false
+gem 'rubocop-performance', require: false
 
 gemspec
