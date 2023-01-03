@@ -5,9 +5,6 @@ require:
 AllCops:
   NewCops: enable
 
-Gemspec/RequiredRubyVersion:
-  Enabled: false
-
 Metrics:
   Enabled: false
 

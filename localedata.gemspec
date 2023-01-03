@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.executables   = ['localedata']
 
-  spec.required_ruby_version = '>= 2.3.0'
+  spec.required_ruby_version = '>= 2.7.0'
 
   spec.add_dependency 'faraday', '>= 0.12.0'
   spec.add_dependency 'thor', '>= 0.20.0'
