@@ -15,6 +15,8 @@ Gem::Specification.new do |spec|
   spec.license  = 'MIT'
 
   spec.metadata = {
+    'source_code_uri' => 'https://github.com/localedata/localedata-client',
+    'changelog_uri' => 'https://github.com/localedata/localedata-client/blob/main/CHANGELOG.md',
     'rubygems_mfa_required' => 'true'
   }
 
