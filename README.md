@@ -55,10 +55,6 @@ localedata pull       # downloads all your locales
 localedata pull en de # downloads only the en and de locales
 ```
 
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/localedata/localedata-client. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
