@@ -28,7 +28,7 @@ jobs:
           bundler-cache: true
 
       - name: Run rubocop
-        run: bundle exec rubocop --parallel
+        run: bundle exec rubocop -f github
 
       - name: Run tests
         run: bundle exec rake test
