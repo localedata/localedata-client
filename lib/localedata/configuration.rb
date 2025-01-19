@@ -19,8 +19,8 @@ module Localedata
       yaml_data = ERB.new(file_content).result
       config_data = YAML.safe_load(yaml_data)
 
-      @access_token = (config_data['access_token'] || @access_token)
-      @projects = (config_data['projects'] || @projects)
+      @access_token = config_data['access_token'] || @access_token
+      @projects = config_data['projects'] || @projects
 
       validate_configuration!
     end
@@ -69,7 +69,7 @@ module Localedata
           exit 1
         end
 
-        project['locales'].each do |_language_code, relative_file_path|
+        project['locales'].each_value do |relative_file_path|
           file_path = File.expand_path(relative_file_path)
 
           unless File.exist?(file_path)
